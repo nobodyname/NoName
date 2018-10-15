@@ -10,11 +10,26 @@ ext {
     ]
 
     def dependVersion = [
-            support           : "27.1.0"
+            support           : "27.1.0",
+            butterknife       : "8.8.1",
+            dagger2           : "2.16",
     ]
 
     dependencies = [
             // base
-            "appcompat-v7"                 : "com.android.support:appcompat-v7:${dependVersion.support}"
+            "appcompat-v7"                 : "com.android.support:appcompat-v7:${dependVersion.support}",
+
+            // rx
+            "rxlifecycle"                  : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
+            "rxlifecycle-components"       : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+
+            // di
+            "butterknife"                 : "com.jakewharton:butterknife:${dependVersion.butterknife}",
+            "butterknife-compiler"        : "com.jakewharton:butterknife-compiler:${dependVersion.butterknife}",
+            "dagger"                      : "com.google.dagger:dagger:${dependVersion.dagger2}",
+            "dagger-compiler"             : "com.google.dagger:dagger-compiler:${dependVersion.dagger2}",
+
+            // ui
+            "spinkit"                     : "com.github.ybq:Android-SpinKit:1.1.0"
     ]
 }

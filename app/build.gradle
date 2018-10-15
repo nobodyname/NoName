@@ -27,4 +27,17 @@ dependencies {
 
     // base
     implementation rootProject.ext.dependencies["appcompat-v7"]
+
+    // rx
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle-components"]
+
+    // di
+    implementation rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    implementation rootProject.ext.dependencies["dagger"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+
+    // ui
+    implementation rootProject.ext.dependencies["spinkit"]
 }
