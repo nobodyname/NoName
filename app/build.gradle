@@ -27,6 +27,8 @@ dependencies {
 
     // base
     implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["design"]
 
     // rx
     implementation rootProject.ext.dependencies["rxlifecycle"]
@@ -40,4 +42,5 @@ dependencies {
 
     // ui
     implementation rootProject.ext.dependencies["spinkit"]
+    implementation rootProject.ext.dependencies["smartrefreshlayout"]
 }

@@ -123,7 +123,7 @@ public class EmptyLayout extends FrameLayout {
     /**
      * 点击重试监听
      */
-    interface OnRetryListener {
+    public interface OnRetryListener {
 
         void onRetry();
     }

@@ -17,11 +17,13 @@ ext {
 
     dependencies = [
             // base
-            "appcompat-v7"                 : "com.android.support:appcompat-v7:${dependVersion.support}",
+            "appcompat-v7"                : "com.android.support:appcompat-v7:${dependVersion.support}",
+            "recyclerview-v7"             : "com.android.support:recyclerview-v7:${dependVersion.support}",
+            "design"                      : "com.android.support:design:${dependVersion.support}",
 
             // rx
-            "rxlifecycle"                  : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
-            "rxlifecycle-components"       : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+            "rxlifecycle"                 : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
+            "rxlifecycle-components"      : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
 
             // di
             "butterknife"                 : "com.jakewharton:butterknife:${dependVersion.butterknife}",
@@ -30,6 +32,7 @@ ext {
             "dagger-compiler"             : "com.google.dagger:dagger-compiler:${dependVersion.dagger2}",
 
             // ui
-            "spinkit"                     : "com.github.ybq:Android-SpinKit:1.1.0"
+            "spinkit"                     : "com.github.ybq:Android-SpinKit:1.1.0",
+            "smartrefreshlayout"          : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1"
     ]
 }

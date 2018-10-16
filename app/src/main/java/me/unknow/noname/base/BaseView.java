@@ -11,4 +11,9 @@ public interface BaseView {
      * 隐藏加载动画
      */
     void hideLoading();
+
+    /**
+     * 显示网络错误
+     */
+    void showNetError();
 }
