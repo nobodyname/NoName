@@ -1,5 +1,7 @@
 package me.unknow.noname;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import butterknife.BindView;
@@ -25,6 +28,22 @@ public class MainActivity extends BaseActivity {
     Toolbar mToolbar;
 
     private SparseArray<String> mSparseTags = new SparseArray<>();
+    private int mNavItemId = -1;
+
+    private Handler mHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case R.id.zhihu:
+                    replaceFragment(R.id.fl_container, new ZhihuMainFragment(), mSparseTags.get(R.id.zhihu));
+                    break;
+                case R.id.collection:
+                    break;
+            }
+            mNavItemId = -1;
+            return true;
+        }
+    });
 
     @Override
     protected int getLayoutRes() {
@@ -33,22 +52,33 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initViews() {
+        addFragment(R.id.fl_container, new ZhihuMainFragment());
+        mSparseTags.put(R.id.zhihu, "Zhihu");
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open, R.string.drawer_close);
-        toggle.syncState();
-        mDrawerLayout.addDrawerListener(toggle);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-                switch (item.getItemId()) {
-                    case R.id.zhihu:
-                        replaceFragment(R.id.fl_container, new ZhihuMainFragment(), mSparseTags.get(R.id.zhihu));
-                        break;
-                    case R.id.collection:
-                        break;
+                if (item.isChecked()) {
+                    return true;
+                } else {
+                    mNavItemId = item.getItemId();
+                    return true;
                 }
-                return false;
+            }
+        });
+
+        mDrawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                mHandler.sendEmptyMessage(mNavItemId);
             }
         });
     }

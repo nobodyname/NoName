@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:checkableBehavior="single">
+    <item android:title="@string/drawer_info">
+        <menu>
+            <item
+                android:id="@+id/zhihu"
+                android:icon="@mipmap/ic_drawer_zhihu"
+                android:checked="true"
+                android:title="@string/zhihu" />
+        </menu>
+    </item>
 
-        <item
-            android:id="@+id/zhihu"
-            android:icon="@mipmap/ic_drawer_zhihu"
-            android:checked="true"
-            android:title="@string/zhihu" />
-
-    </group>
-
-    <group android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/collection"
-            android:icon="@mipmap/ic_drawer_like"
-            android:title="@string/collection" />
-
-    </group>
+    <item android:title="@string/drawer_options">
+        <menu>
+            <item
+                android:id="@+id/collection"
+                android:icon="@mipmap/ic_drawer_like"
+                android:title="@string/collection" />
+        </menu>
+    </item>
 
 </menu>

@@ -7,7 +7,7 @@ import android.preference.PreferenceManager;
 public class PreferenceUtil {
 
     public static boolean getBoolean(Context context, String tag) {
-        return getBoolean(context, tag);
+        return getBoolean(context, tag, false);
     }
 
     public static boolean getBoolean(Context context, String tag, boolean defaultValue) {

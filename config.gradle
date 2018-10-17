@@ -13,6 +13,7 @@ ext {
             support           : "27.1.0",
             butterknife       : "8.8.1",
             dagger2           : "2.16",
+            retrofit          : "2.4.0"
     ]
 
     dependencies = [
@@ -24,6 +25,9 @@ ext {
             // rx
             "rxlifecycle"                 : "com.trello.rxlifecycle2:rxlifecycle:2.2.2",
             "rxlifecycle-components"      : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+            "rxjava"                      : "io.reactivex.rxjava2:rxjava:2.1.17",
+            "rxandroid"                   : "io.reactivex.rxjava2:rxandroid:2.0.2",
+            "rxpermissions"               : "com.github.tbruyelle:rxpermissions:0.10.2",
 
             // di
             "butterknife"                 : "com.jakewharton:butterknife:${dependVersion.butterknife}",
@@ -33,6 +37,15 @@ ext {
 
             // ui
             "spinkit"                     : "com.github.ybq:Android-SpinKit:1.1.0",
-            "smartrefreshlayout"          : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1"
+            "smartrefreshlayout"          : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1",
+
+            // network
+            "retrofit"                    : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+            "retrofit-converter-gson"     : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}",
+            "retrofit-adapter-rxjava"     : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
+            "okhttp-logging-interceptor"  : "com.squareup.okhttp3:logging-interceptor:3.11.0",
+
+            // other
+            "logger"                      : "com.orhanobut:logger:2.2.0"
     ]
 }

@@ -2,7 +2,6 @@ package me.unknow.noname.base;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,7 +17,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.unknow.noname.Constants;
+import butterknife.Unbinder;
+import me.unknow.noname.app.Constants;
 import me.unknow.noname.R;
 import me.unknow.noname.util.PreferenceUtil;
 import me.unknow.noname.widget.EmptyLayout;
@@ -39,6 +39,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
     @BindView(R.id.refresh_layout)
     SmartRefreshLayout mRefreshLayout;
 
+    private Unbinder mUnbinder;
+
     @LayoutRes
     protected abstract int getLayoutRes();
 
@@ -51,14 +53,20 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
 
-        if (PreferenceUtil.getBoolean(this, Constants.SP_BOTTOM_NAV)
+        if (PreferenceUtil.getBoolean(this, Constants.SP_BOTTOM_NAV, true)
                 && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
-        ButterKnife.bind(this);
+        mUnbinder = ButterKnife.bind(this);
         initViews();
         initInject();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mUnbinder.unbind();
     }
 
     @Override

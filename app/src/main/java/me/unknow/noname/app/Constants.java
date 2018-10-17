@@ -1,4 +1,4 @@
-package me.unknow.noname;
+package me.unknow.noname.app;
 
 public class Constants {
 

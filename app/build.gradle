@@ -33,6 +33,9 @@ dependencies {
     // rx
     implementation rootProject.ext.dependencies["rxlifecycle"]
     implementation rootProject.ext.dependencies["rxlifecycle-components"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["rxpermissions"]
 
     // di
     implementation rootProject.ext.dependencies["butterknife"]
@@ -43,4 +46,13 @@ dependencies {
     // ui
     implementation rootProject.ext.dependencies["spinkit"]
     implementation rootProject.ext.dependencies["smartrefreshlayout"]
+
+    // network
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["retrofit-converter-gson"]
+    implementation rootProject.ext.dependencies["retrofit-adapter-rxjava"]
+    implementation rootProject.ext.dependencies["okhttp-logging-interceptor"]
+
+    // other
+    implementation rootProject.ext.dependencies["logger"]
 }
