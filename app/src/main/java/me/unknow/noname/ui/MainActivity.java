@@ -1,4 +1,4 @@
-package me.unknow.noname;
+package me.unknow.noname.ui;
 
 import android.os.Handler;
 import android.os.Message;
@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.SparseArray;
 import android.view.MenuItem;
@@ -14,7 +13,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import butterknife.BindView;
+import me.unknow.noname.R;
 import me.unknow.noname.base.BaseActivity;
+import me.unknow.noname.ui.zhihu.ZhihuMainFragment;
 
 public class MainActivity extends BaseActivity {
 

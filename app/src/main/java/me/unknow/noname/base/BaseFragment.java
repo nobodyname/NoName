@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
@@ -21,7 +24,7 @@ import butterknife.Unbinder;
 import me.unknow.noname.R;
 import me.unknow.noname.widget.EmptyLayout;
 
-public abstract class BaseFragment<T extends BasePresenter> extends RxFragment implements BaseView {
+public abstract class BaseFragment<T extends BasePresenter> extends RxFragment implements BaseView, EmptyLayout.OnRetryListener {
 
     @Inject
     protected T mPresenter;
@@ -74,16 +77,44 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
 
     @Override
     public void showLoading() {
-
+        if (mEmptyLayout != null) {
+            mEmptyLayout.setEmptyStatus(EmptyLayout.STATUS_LOADING);
+        }
     }
 
     @Override
     public void hideLoading() {
-
+        if (mEmptyLayout != null) {
+            mEmptyLayout.hide();
+        }
     }
 
     @Override
     public void showNetError() {
+        if (mEmptyLayout != null) {
+            mEmptyLayout.setEmptyStatus(EmptyLayout.STATUS_NO_NET);
+            mEmptyLayout.setOnRetryListener(this);
+        }
+    }
 
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.bindToLifecycle();
+    }
+
+    @Override
+    public void onRetry() {
+
+    }
+
+    private void initSwipeRefresh() {
+        if (mRefreshLayout != null) {
+            mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+                @Override
+                public void onRefresh(RefreshLayout refreshLayout) {
+
+                }
+            });
+        }
     }
 }

@@ -46,6 +46,7 @@ dependencies {
     // ui
     implementation rootProject.ext.dependencies["spinkit"]
     implementation rootProject.ext.dependencies["smartrefreshlayout"]
+    implementation rootProject.ext.dependencies["recyclerviewadapter"]
 
     // network
     implementation rootProject.ext.dependencies["retrofit"]

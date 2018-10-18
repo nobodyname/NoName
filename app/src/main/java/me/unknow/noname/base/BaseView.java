@@ -1,5 +1,7 @@
 package me.unknow.noname.base;
 
+import com.trello.rxlifecycle2.LifecycleTransformer;
+
 public interface BaseView {
 
     /**
@@ -16,4 +18,11 @@ public interface BaseView {
      * 显示网络错误
      */
     void showNetError();
+
+    /**
+     * 绑定生命周期
+     * @param <T>
+     * @return
+     */
+    <T> LifecycleTransformer<T> bindToLife();
 }

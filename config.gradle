@@ -38,6 +38,7 @@ ext {
             // ui
             "spinkit"                     : "com.github.ybq:Android-SpinKit:1.1.0",
             "smartrefreshlayout"          : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1",
+            "recyclerviewadapter"         : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.42",
 
             // network
             "retrofit"                    : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",

@@ -28,7 +28,7 @@ public class RetrofitService {
 
     private static final String ZHIHU_HOST = "http://news-at.zhihu.com/api/4/";
 
-    private static ZhihuApis mZhihuApis;
+    public static ZhihuApis mZhihuApis;
 
     public static void init() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -84,4 +84,8 @@ public class RetrofitService {
             }
         }
     };
+
+    // =======================================================================
+
+
 }
