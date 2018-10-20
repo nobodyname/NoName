@@ -1,6 +1,8 @@
 package me.unknow.noname.base;
 
-public interface BasePresenter {
+public interface BasePresenter<T> {
 
-    void getData();
+    void attachView(T view);
+
+    void detachView();
 }

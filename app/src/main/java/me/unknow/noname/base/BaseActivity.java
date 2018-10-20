@@ -59,6 +59,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
             getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
         }
 
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+        }
+
         mUnbinder = ButterKnife.bind(this);
         initViews();
         initInject();
@@ -66,6 +70,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
 
     @Override
     protected void onDestroy() {
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
         super.onDestroy();
         mUnbinder.unbind();
     }

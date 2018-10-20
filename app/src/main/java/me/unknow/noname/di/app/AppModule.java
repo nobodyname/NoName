@@ -1,4 +1,4 @@
-package me.unknow.noname.di;
+package me.unknow.noname.di.app;
 
 import android.content.Context;
 

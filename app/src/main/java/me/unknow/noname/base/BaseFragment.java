@@ -22,6 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.unknow.noname.R;
+import me.unknow.noname.app.App;
+import me.unknow.noname.di.fragment.DaggerFragmentComponent;
+import me.unknow.noname.di.fragment.FragmentComponent;
+import me.unknow.noname.di.fragment.FragmentModule;
 import me.unknow.noname.widget.EmptyLayout;
 
 public abstract class BaseFragment<T extends BasePresenter> extends RxFragment implements BaseView, EmptyLayout.OnRetryListener {
@@ -116,5 +120,12 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
                 }
             });
         }
+    }
+
+    protected FragmentComponent getFragmentComponent() {
+        return DaggerFragmentComponent.builder()
+                .appComponent(App.getAppComponent())
+                .fragmentModule(new FragmentModule(this))
+                .build();
     }
 }

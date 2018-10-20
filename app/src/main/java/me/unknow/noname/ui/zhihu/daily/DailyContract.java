@@ -11,7 +11,8 @@ public interface DailyContract {
         void showContent(DailyListBean bean);
     }
 
-    interface Presenter extends BasePresenter {
+    interface Presenter extends BasePresenter<View> {
 
+        void getData();
     }
 }
