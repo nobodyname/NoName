@@ -22,6 +22,8 @@ public class ZhihuMainFragment extends BaseFragment {
     @BindView(R.id.vp_zhihu)
     ViewPager mViewPager;
 
+    private ViewPagerAdapter mAdapter;
+
     private List<Fragment> mFragments = new ArrayList<>();
 
     @Override
@@ -35,13 +37,9 @@ public class ZhihuMainFragment extends BaseFragment {
         mFragments.add(new ThemeFragment());
         mFragments.add(new SectionFragment());
         mFragments.add(new HotFragment());
-        mViewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager(), mFragments));
+        mAdapter = new ViewPagerAdapter(getChildFragmentManager(), mFragments);
+        mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
-    }
-
-    @Override
-    protected void initInject() {
-
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {

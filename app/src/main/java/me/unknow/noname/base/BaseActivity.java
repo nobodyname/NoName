@@ -19,6 +19,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.unknow.noname.app.App;
 import me.unknow.noname.app.Constants;
 import me.unknow.noname.R;
 import me.unknow.noname.util.PreferenceUtil;
@@ -47,8 +48,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
 
     protected abstract void initViews();
 
-    protected abstract void initInject();
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +65,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
         mUnbinder = ButterKnife.bind(this);
         initViews();
         initInject();
+
+        App.getInstance().addActivity(this);
     }
 
     @Override
@@ -74,7 +75,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatA
             mPresenter.detachView();
         }
         super.onDestroy();
+        App.getInstance().removeActivity(this);
         mUnbinder.unbind();
+    }
+
+    protected void initInject() {
+
     }
 
     @Override

@@ -35,7 +35,7 @@ public class RetrofitService {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
 
         // 指定缓存目录，缓存大小为 10Mb
-        Cache cache = new Cache(new File(App.getContext().getCacheDir(), "HttpCache"), 1024 * 1024 * 10);
+        Cache cache = new Cache(new File(App.getInstance().getCacheDir(), "HttpCache"), 1024 * 1024 * 10);
         OkHttpClient client = new OkHttpClient.Builder()
                 .cache(cache)
                 .retryOnConnectionFailure(true)
@@ -61,7 +61,7 @@ public class RetrofitService {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            if (NetworkUtil.isNetworkAvailable(App.getContext())) {
+            if (!NetworkUtil.isNetworkAvailable(App.getInstance())) {
                 request = request.newBuilder()
                         .cacheControl(CacheControl.FORCE_CACHE)
                         .build();
@@ -69,7 +69,7 @@ public class RetrofitService {
             }
             Response response = chain.proceed(request);
 
-            if (NetworkUtil.isNetworkAvailable(App.getContext())) {
+            if (NetworkUtil.isNetworkAvailable(App.getInstance())) {
                 // 有网的时候读接口上的@Headers里的配置，在这里进行统一的设置
                 String cacheControl = request.cacheControl().toString();
                 return response.newBuilder()
@@ -84,8 +84,4 @@ public class RetrofitService {
             }
         }
     };
-
-    // =======================================================================
-
-
 }

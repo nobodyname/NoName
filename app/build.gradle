@@ -29,6 +29,7 @@ dependencies {
     implementation rootProject.ext.dependencies["appcompat-v7"]
     implementation rootProject.ext.dependencies["recyclerview-v7"]
     implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["preference-v14"]
 
     // rx
     implementation rootProject.ext.dependencies["rxlifecycle"]
@@ -47,12 +48,15 @@ dependencies {
     implementation rootProject.ext.dependencies["spinkit"]
     implementation rootProject.ext.dependencies["smartrefreshlayout"]
     implementation rootProject.ext.dependencies["recyclerviewadapter"]
+    implementation rootProject.ext.dependencies["imageslider"]
 
     // network
     implementation rootProject.ext.dependencies["retrofit"]
     implementation rootProject.ext.dependencies["retrofit-converter-gson"]
     implementation rootProject.ext.dependencies["retrofit-adapter-rxjava"]
     implementation rootProject.ext.dependencies["okhttp-logging-interceptor"]
+    implementation rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
     // other
     implementation rootProject.ext.dependencies["logger"]

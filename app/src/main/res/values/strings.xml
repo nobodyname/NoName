@@ -5,5 +5,13 @@
     <string name="drawer_info">资讯</string>
     <string name="zhihu">知乎</string>
     <string name="collection">收藏</string>
+    <string name="settings">设置</string>
     <string name="drawer_options">选项</string>
+    <string name="bottom_nav_tint">底部导航栏</string>
+    <string name="bottom_nav_tint_des">使用主题颜色为导航栏着色</string>
+    <string name="bottom_nav_tint_tip">重启应用后生效</string>
+    <string name="no_image">无图模式</string>
+    <string name="no_image_des">开启后在非Wifi下不加载图片</string>
+    <string name="no_image_turn_on_tip">已开启无图模式</string>
+    <string name="no_image_turn_off_tip">已关闭无图模式</string>
 </resources>

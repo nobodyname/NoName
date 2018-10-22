@@ -40,7 +40,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @BindView(R.id.refresh_layout)
     SmartRefreshLayout mRefreshLayout;
 
-    private View mRootView;
+    private View mView;
     protected Context mContext;
     private Unbinder mUnbinder;
 
@@ -48,8 +48,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     protected abstract int getLayoutRes();
 
     protected abstract void initViews();
-
-    protected abstract void initInject();
 
     @Override
     public void onAttach(Context context) {
@@ -60,23 +58,32 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (mRootView == null) {
-            mRootView = inflater.inflate(getLayoutRes(), null);
-            mUnbinder = ButterKnife.bind(this, mRootView);
-            initViews();
-            initInject();
+        mView = inflater.inflate(getLayoutRes(), null);
+        return mView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initInject();
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
         }
-        ViewGroup parent = (ViewGroup) mRootView.getParent();
-        if (parent != null) {
-            parent.removeView(mRootView);
-        }
-        return mRootView;
+        mUnbinder = ButterKnife.bind(this, mView);
+        initViews();
     }
 
     @Override
     public void onDestroyView() {
+        if (mPresenter != null) {
+            mPresenter.detachView();
+        }
         super.onDestroyView();
         mUnbinder.unbind();
+    }
+
+    protected void initInject() {
+
     }
 
     @Override

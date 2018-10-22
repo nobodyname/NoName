@@ -48,7 +48,7 @@ public class EmptyLayout extends FrameLayout {
     }
 
     private void init() {
-        View.inflate(mContext, R.layout.layout_empty, this);
+        View.inflate(mContext, R.layout.empty_loading, this);
         ButterKnife.bind(this);
     }
 

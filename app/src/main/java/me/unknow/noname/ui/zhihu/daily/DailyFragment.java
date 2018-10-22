@@ -1,5 +1,6 @@
 package me.unknow.noname.ui.zhihu.daily;
 
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -33,7 +34,9 @@ public class DailyFragment extends BaseFragment<DailyPresenter> implements Daily
     @Override
     public void showContent(DailyListBean bean) {
         mAdapter = new DailyAdapter(bean.getStories());
+        mAdapter.openLoadAnimation();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, LinearLayoutManager.VERTICAL));
         mRecyclerView.setAdapter(mAdapter);
     }
 }

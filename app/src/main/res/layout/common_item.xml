@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<me.unknow.noname.widget.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_ripple"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:rv_listMode="true"
+    app:rv_rippleDuration="1000"
+    app:rv_type="rectangle">
 
     <ImageView
+        android:id="@+id/iv_icon"
         android:layout_width="@dimen/news_icon_width"
-        android:layout_height="@dimen/news_icon_height" />
+        android:layout_height="@dimen/news_icon_height"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_default_1" />
 
     <TextView
-        android:id="@+id/tv_item_text"
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_toRightOf="@id/iv_icon"
+        android:maxLines="2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-</LinearLayout>
+</me.unknow.noname.widget.RippleView>

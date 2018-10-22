@@ -22,4 +22,21 @@ public class NetworkUtil {
             return false;
         }
     }
+
+    /**
+     * 判断WIFI是否可用
+     * @param context
+     * @return
+     */
+    public static boolean isWifiConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager cm = (ConnectivityManager)
+                    context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            if (networkInfo != null && networkInfo.isAvailable()) {
+                return networkInfo.isConnected();
+            }
+        }
+        return false;
+    }
 }
