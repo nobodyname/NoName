@@ -10,6 +10,10 @@ import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
@@ -23,6 +27,8 @@ public class DailyFragment extends BaseFragment<DailyPresenter> implements Daily
 
     @BindView(R.id.rv_common)
     RecyclerView mRecyclerView;
+    @BindView(R.id.refresh_layout)
+    SmartRefreshLayout mSmartRefreshLayout;
 
     private DailyAdapter mAdapter;
 
@@ -34,11 +40,28 @@ public class DailyFragment extends BaseFragment<DailyPresenter> implements Daily
     @Override
     protected void initViews() {
         mPresenter.getData();
+        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshLayout) {
+                mPresenter.getData();
+            }
+        });
+        mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshLayout) {
+
+            }
+        });
     }
 
     @Override
     protected void initInject() {
         getFragmentComponent().inject(this);
+    }
+
+    @Override
+    public void onRetry() {
+        mPresenter.getData();
     }
 
     @Override

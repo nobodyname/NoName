@@ -14,6 +14,7 @@ import butterknife.BindView;
 import me.unknow.noname.R;
 import me.unknow.noname.base.BaseFragment;
 import me.unknow.noname.ui.zhihu.daily.DailyFragment;
+import me.unknow.noname.ui.zhihu.theme.ThemeFragment;
 
 public class ZhihuMainFragment extends BaseFragment {
 

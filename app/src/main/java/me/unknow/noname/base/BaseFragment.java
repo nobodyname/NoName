@@ -12,6 +12,7 @@ import android.view.ViewParent;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
@@ -36,9 +37,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @Nullable
     @BindView(R.id.empty_layout)
     EmptyLayout mEmptyLayout;
-    @Nullable
-    @BindView(R.id.refresh_layout)
-    SmartRefreshLayout mRefreshLayout;
 
     private View mView;
     protected Context mContext;
@@ -82,7 +80,10 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
         mUnbinder.unbind();
     }
 
-    protected void initInject() {
+    protected void initInject() {}
+
+    @Override
+    public void onRetry() {
 
     }
 
@@ -111,22 +112,6 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     @Override
     public <T> LifecycleTransformer<T> bindToLife() {
         return this.bindToLifecycle();
-    }
-
-    @Override
-    public void onRetry() {
-
-    }
-
-    private void initSwipeRefresh() {
-        if (mRefreshLayout != null) {
-            mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-                @Override
-                public void onRefresh(RefreshLayout refreshLayout) {
-
-                }
-            });
-        }
     }
 
     protected FragmentComponent getFragmentComponent() {
